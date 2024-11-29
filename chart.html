@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart Penjualan Tahunan</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background-image: url(PINK.jpeg); /* Ganti dengan URL gambar pilihan Anda */
+            background-size: cover;
+            background-position: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); /* Transparansi agar gambar tetap terlihat */
+            border-radius: 15px;
+            padding: 40px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #ff66b2;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .chart-container {
+            width: 100%;
+            height: 400px;
+        }
+
+        .info {
+            text-align: center;
+            margin-top: 20px;
+            color: #ff66b2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Chart Penjualan Tahunan</h1>
+        <div class="chart-container">
+            <canvas id="salesChart"></canvas>
+        </div>
+        <div class="info">
+            <p>Data Penjualan Produk Selama Tahun 2024</p>
+        </div>
+    </div>
+
+    <script>
+        // Data untuk chart penjualan tahunan
+        const ctx = document.getElementById('salesChart').getContext('2d');
+        const salesChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'Penjualan (Dalam Juta)',
+                    data: [10, 15, 9, 20, 25, 30, 35, 40, 45, 50, 55, 60], // Data penjualan per bulan
+                    backgroundColor: '#ff66cc',
+                    borderColor: '#ff3385',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 10
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: '#ff66b2'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
